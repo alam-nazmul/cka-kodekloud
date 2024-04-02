@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+  name: myapp-rs
+  labels:
+    app: myapp
+    type: front-end
+    name: nazmul
+spec:
+  template:
+    metadata:
+      name: myapp-prod
+      labels:
+        app: myapp
+        type: front-end1
+    spec:
+      containers:
+        - name: nginx-container
+          image: nginx
+  replicas: 5
+  selector:
+    matchLabels:
+      type: front-end   # Label of ReplicaSet
