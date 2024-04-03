@@ -8,6 +8,6 @@ spec:
     - port: 80
       targetPort: 80
       nodePort: 30010
-      protocol: tcp
+      protocol: TCP
   selector:
     type: front-end
