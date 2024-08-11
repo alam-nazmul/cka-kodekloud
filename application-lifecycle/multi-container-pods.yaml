@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: web-pod
+spec:
+  containers:
+    - name: web-server
+      image: nginx
+    - name: logging
+      image: fluentd
