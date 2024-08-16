@@ -115,7 +115,7 @@ rm -rf /etc/containerd/config.toml
 
 ### Restart the containerd service
 ```
-systemctl restart kubelet.service
+systemctl restart containerd.service
 ```
 
 
