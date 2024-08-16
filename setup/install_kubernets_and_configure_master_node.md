@@ -19,7 +19,7 @@ echo 'deb [signed-by=/etc/apt/keyrings/kubernetes-apt-keyring.gpg] https://pkgs.
 
 ### Update the all packages
 ```
-apy update -y
+apt update -y
 ```
 
 ### Install Kubernetes Tools
