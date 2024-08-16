@@ -19,7 +19,7 @@ echo 'deb [signed-by=/etc/apt/keyrings/kubernetes-apt-keyring.gpg] https://pkgs.
 
 ### Update the all packages
 ```
-apy update -y
+apt update -y
 ```
 
 ### Install Kubernetes Tools
@@ -110,7 +110,7 @@ rm -rf /etc/containerd/config.toml
 
 ### Restart the containerd service
 ```
-systemctl restart kubelet.service
+systemctl restart containerd.service
 ```
 
 ### Enter the token cmd line, which we previously get from master node
