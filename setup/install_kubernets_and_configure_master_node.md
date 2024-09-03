@@ -152,3 +152,8 @@ kubectl create -f kube-flannel.yml
 ```
 kubectl get pods -A -o wide
 ```
+
+### Create a token if you forget the current token
+```
+kubeadm token create --print-join-command
+```
