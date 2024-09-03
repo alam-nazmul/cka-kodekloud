@@ -150,5 +150,5 @@ kubectl create -f kube-flannel.yml
 
 ### Check the all pods
 ```
-kubecrl get pods -A -o wide
+kubectl get pods -A -o wide
 ```
