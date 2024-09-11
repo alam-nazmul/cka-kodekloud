@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: test-pod
+  labels:
+    color: blue
+spec:
+  nodeName: kworker1  # node name
+  containers:
+    - name: test-container
+      image: nginx
+      ports:
+        - containerPort: 80
