@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+  name: nginx-replicaset
+  labels:
+    color: red    # This labels are for REPLICASET
+    path: abc
+spec:
+  replicas: 7
+  selector:
+    matchLabels:
+      name: app1    # Will be same template's labels
+  template:
+    metadata:
+      labels:
+        name: app1
+        func: backend
+    spec:
+      containers:
+        - name: app-pod
+          image: nginx
