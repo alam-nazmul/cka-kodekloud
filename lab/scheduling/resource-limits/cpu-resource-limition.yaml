@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: simple-web-pod
+  labels:
+    color: blue
+spec:
+  containers:
+    - name: simple-web-container
+      imagePullPolicy: Always
+      image: nginx
+      ports:
+        - containerPort: 80
+      resources:
+        requests:
+          cpu: 2
+          memory: "4Gi"
