@@ -1,0 +1,21 @@
+### Prepare a Pod definition file with a Nginx container and a Redis container
+
+apiVersion: v1
+kind: Pod
+metadata:
+  name: multi-containers-pod
+  labels:
+    container_number: multiple
+spec:
+  containers:
+    - name: nginx-container
+      imagePullPolicy: Always
+      image: nginx
+      ports:
+        - containerPort: 80
+
+    - name: redis-container
+      image: redis
+      imagePullPolicy: Always
+      ports:
+        - containerPort: 6379
