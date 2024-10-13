@@ -80,4 +80,25 @@ kubectl apply -f <file_name> -n <namespace_name>
 kubectl exec -it <pod_name> -c <container_name> /bin/bash
 ```
 
+### Remember we cannot edit the specifications of an existing Pod other than the below
+    - Container's image
+    - initContainer's image
+    - activeDeadlinesSeconds
+    - tolerations
 
+### How to edit the Pod parameters with running Pod
+```Actionscript
+kubectl edit pod <pod_name>
+```
+
+### How to set a new container image on running Pod
+```Actionscript
+kubectl set image <pod_name>/<container_name> <container_name>=<new_image_name>
+```
+
+### Remember: Pod will accept the below conditions for it's naming
+1. lower case letter
+2. start will number or lower case letter
+3. '-' will acceptable, but '_' will not acceptable
+4. Never use '.' at end for naming of pod
+5. Pod name will be as FQDN.
