@@ -1,0 +1,15 @@
+### Prepare a Pod definition file with a Nginx container
+
+apiVersion: v1
+kind: Pod
+metadata:
+  name: single-container-pod
+  labels:
+    container_number: single
+spec:
+  containers:
+    - name: nginx-container
+      image: nginx
+      imagePullPolicy: Always
+      ports:
+        - containerPort: 80
