@@ -1,0 +1,26 @@
+# Run a nginx container where a ubuntu container will run as initcontainer with 10s
+
+
+apiVersion: v1
+kind: Pod
+metadata:
+  name: init-container
+  labels:
+    topic: initcontainer
+spec:
+  initContainers:
+    - name: initcontainer-container-1
+      imagePullPolicy: Always
+      image: ubuntu
+      command: ['sh', '-c', 'sleep 10']
+    - name: initcontainer-container-2
+      imagePullPolicy: Always
+      image: ubuntu:20.04
+      command: ['sh', '-c', 'sleep 10']
+
+  containers:
+    - name: web-container
+      image: nginx
+      imagePullPolicy: Always
+      ports:
+        - containerPort: 80
