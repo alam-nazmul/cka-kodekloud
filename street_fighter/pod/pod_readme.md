@@ -132,3 +132,21 @@ kubectl logs pods <pod_name> -c <container_name> --since=60m
 ```angular2html
 kubectl logs pods <pod_name> -c <container_name> --tail=10
 ```
+
+### Pod restart policy
+1. Never
+2. Always
+3. OnFailure
+
+#### Restart policy: Never
+    - If the pod complete the assigned task, then the POD will never restart.
+
+#### Restart policy: Always
+    - The pod will restart in ifinity loop if the Pod complete the task or faceing errors or if the container can not run properly.
+    - By default the pod restart policy is Never
+
+#### Restart Policy: OnFailure
+    - If the service become stop, then the Pod will restart.
+
+
+
