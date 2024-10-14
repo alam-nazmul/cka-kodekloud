@@ -1,0 +1,31 @@
+#Prepare a side definition file where Nginx will be primary container and a Busybox will be sidecar container.
+#While the sidecar container runs a logging process that tails the Nginx logs.
+
+apiVersion: v1
+kind: Pod
+metadata:
+  name: nginx-with-sidecar-container
+  labels:
+    topic: sidecar
+spec:
+  containers:
+    - name: nginx-container
+      imagePullPolicy: Always
+      image: nginx
+      ports:
+        - containerPort: 80
+      volumeMounts:
+        - mountPath: /var/log/nginx
+          name: shared-logs
+
+    - name: sidecar-container
+      image: busybox
+      imagePullPolicy: Always
+      command: ["/bin/sh", "-c", "tail -f /var/log/nginx/access.log"]
+      volumeMounts:
+        - mountPath: /var/log/nginx
+          name: shared-logs
+
+  volumes:
+    - name: shared-logs
+      emptyDir: {}
