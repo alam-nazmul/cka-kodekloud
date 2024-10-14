@@ -149,4 +149,4 @@ kubectl logs pods <pod_name> -c <container_name> --tail=10
     - If the service become stop, then the Pod will restart.
 
 
-
+#### _Note: Pod will not be restarted if a container continuously restarted._  
