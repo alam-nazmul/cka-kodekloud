@@ -102,3 +102,33 @@ kubectl set image <pod_name>/<container_name> <container_name>=<new_image_name>
 3. '-' will acceptable, but '_' will not acceptable
 4. Never use '.' at end for naming of pod
 5. Pod name will be as FQDN.
+
+### How to copy a file from host machine to a container
+```angular2html
+kubectl cp <file_name> <pod_name>:<destination_path> -c <container_name>
+```
+
+### how to copy a file from a container to host machine
+```angular2html
+kubectl cp <pod_name>:<source_path> <destination_path>/<file_name>
+```
+
+### How to show the log for a Pod
+```angular2html
+kubectl logs pods <pod_name>
+```
+
+### How to show the log for a container
+```angular2html
+kubectl logs pods <pod_name> -c <container_name>
+```
+
+### How to show the log for a container with last 1hr
+```angular2html
+kubectl logs pods <pod_name> -c <container_name> --since=60m
+```
+
+### How to show the log for a container for last 10 lines
+```angular2html
+kubectl logs pods <pod_name> -c <container_name> --tail=10
+```
