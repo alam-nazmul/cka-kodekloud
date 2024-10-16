@@ -1,0 +1,19 @@
+### Make a nodePort service where external port is 30018, container port 80, internal port 8080 and internal service IP will be 10.96.0.71
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: nodeport
+  labels:
+    service: nodeport
+spec:
+  selector:
+    app: webapp
+  ports:
+    - port: 80
+      targetPort: 8080
+      nodePort: 30018
+      name: exposeport
+  type: NodePort
+  clusterIP: 10.96.0.71
