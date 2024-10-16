@@ -19,3 +19,14 @@ This service is responsible for application to external communication.
 ### Loadbalancer:
 This service is responsible for application to external communication for public cloud infra. This a replica of NodePort.
 
+
+### How to check the services in cluster
+```angular2html
+kubectl get service -o wide
+```
+
+### How to delete the service
+```angular2html
+kubectl delete service <service_name>
+```
+
