@@ -1,0 +1,19 @@
+### Make an internal service for communicating each others where service port is 8080 and container port 80
+
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: clusterip
+  labels:
+    app: web-app
+    service: internal
+spec:
+  selector:
+    service: internal
+  ports:
+    - port: 8080
+      targetPort: 80
+      protocol: TCP
+  type: ClusterIP
+  clusterIP: 10.96.0.51
