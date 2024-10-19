@@ -1,0 +1,25 @@
+### Make a definition file for Nginx pod with 6 replicas and these Pods will run as HA. This definition file can be rolling update.
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: single-deployment
+  labels:
+    deployment: single
+spec:
+  replicas: 6
+  selector:
+    matchLabels:
+      dept: EEE
+  template:
+    metadata:
+      labels:
+        dept: EEE
+    spec:
+      containers:
+        - name: nginx-container
+          imagePullPolicy: Always
+          image: nginx
+          ports:
+            - containerPort: 80
