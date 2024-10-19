@@ -1,0 +1,25 @@
+### Make a definition file for Nginx service with 6 replicas and these Pods will run as HA
+
+---
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+  name: web-replicaset
+  labels:
+    type: replicaset
+spec:
+  selector:
+    matchLabels:
+      service: replicaset
+  replicas: 6
+  template:
+    metadata:
+      labels:
+        service: replicaset
+    spec:
+      containers:
+        - name: nginx-container
+          image: nginx
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 80
