@@ -1,0 +1,35 @@
+### Make a definition file for Nginx pod and Redis Pod with 6 replicas and these Pods will run as HA
+
+
+---
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+  name: replicast-with-multiple-containers
+  labels:
+    replicaset: multi-containers
+spec:
+  replicas: 8
+  selector:
+    matchLabels:
+      dept: EEE
+      section: c1
+  template:
+    metadata:
+      labels:
+        dept: EEE
+        section: c1
+        batch: summer
+    spec:
+      containers:
+        - name: nginx-container
+          imagePullPolicy: Always
+          image: nginx
+          ports:
+            - containerPort: 80
+
+        - name: redis-container
+          image: redis
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 6379
