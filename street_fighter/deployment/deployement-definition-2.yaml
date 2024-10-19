@@ -1,0 +1,43 @@
+### Make a definition file for Nginx pod and Redis with 6 replicas and these Pods will run as HA. This definition file can be rolling update.
+### These pods will run in a separate namespace name "alhua"
+
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: alhua
+  labels:
+    environment: QA
+
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: deployment-with-namespace
+  namespace: alhua
+  labels:
+    deployment: namespace
+    service: multiple
+spec:
+  replicas: 6
+  selector:
+    matchLabels:
+      dept: EEE
+  template:
+    metadata:
+      labels:
+        dept: EEE
+    spec:
+      containers:
+        - name: nginx-container
+          image: nginx
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 80
+
+        - name: redis-container
+          imagePullPolicy: Always
+          image: redis
+          ports:
+            - containerPort: 6379
