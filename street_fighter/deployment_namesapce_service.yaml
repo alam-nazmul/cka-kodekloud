@@ -14,7 +14,7 @@ metadata:
   labels:
     service: clusterip
     namespace: alhua
-    dp: yes
+    dp: "yes"
 spec:
   replicas: 7
   selector:
@@ -40,7 +40,6 @@ spec:
 
 
 ---
-
 apiVersion: v1
 kind: Service
 metadata:
