@@ -1,0 +1,19 @@
+### Make a pod definition file where pod will run a node where cpu = high
+
+
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: nodeselector
+  labels:
+    scheduling: nodeselector
+spec:
+  nodeSelector:
+    cpu: high
+  containers:
+    - name: nginx-container
+      imagePullPolicy: Always
+      image: nginx
+      ports:
+        - containerPort: 80
