@@ -1,13 +1,20 @@
 
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: akdumbakdum
 
 
+---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
+  namespace: akdumbakdum
   name: nodeselectordp
   labels:
-    scheduling: nodeselector
-    category: deployment
+    schedule: nodeseclector
+    service: deployment
 spec:
   replicas: 7
   selector:
@@ -19,7 +26,7 @@ spec:
         dept: SRE
     spec:
       nodeSelector:
-        cpu: high
+        disk: ssd
       containers:
         - name: nginx-container
           image: nginx
