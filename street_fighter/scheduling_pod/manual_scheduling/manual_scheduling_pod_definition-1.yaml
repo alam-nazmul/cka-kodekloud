@@ -1,0 +1,17 @@
+### Make a Pod definition file where the Pod will run on worker-2 node.
+
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: manual-scheduling
+  labels:
+    scheduling: manual
+spec:
+  nodeName: kworker2
+  containers:
+    - name: nginx-container
+      image: nginx
+      imagePullPolicy: Always
+      ports:
+        - containerPort: 80
