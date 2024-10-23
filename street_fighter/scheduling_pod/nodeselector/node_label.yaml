@@ -1,0 +1,22 @@
+### Make a definition file where worker node2 will be labeled by cpu = high, memory = low and worker node1 will be labeled by cpu = low, memory = high
+
+
+---
+apiVersion: v1
+kind: Node
+metadata:
+  name: kworker2
+  labels:
+    cpu: high
+    memory : low
+
+
+
+---
+apiVersion: v1
+kind: Node
+metadata:
+  name: kworker1
+  labels:
+    cpu: low
+    memory : high
