@@ -1,0 +1,42 @@
+
+
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: alhua
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  namespace: alhua
+  name: node-affinity-deployment
+  labels:
+    category: deployment
+    affinity: nodeaffinity
+spec:
+  replicas: 5
+  selector:
+    matchLabels:
+      dept: SRE
+  template:
+    metadata:
+      labels:
+        dept: SRE
+    spec:
+      affinity:
+        nodeAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            nodeSelectorTerms:
+              - matchExpressions:
+                  - key: cpu
+                    operator: In
+                    values:
+                      - high
+      containers:
+        - name: nginx-container
+          imagePullPolicy: Always
+          image: nginx
+          ports:
+            - containerPort: 80
