@@ -1,0 +1,25 @@
+
+
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: affinity
+  labels:
+    affinity: node
+spec:
+  affinity:
+    nodeAffinity:
+      requiredDuringSchedulingIgnoredDuringExecution:
+        nodeSelectorTerms:
+          - matchExpressions:
+              - key: cpu
+                operator: In
+                values:
+                  - low
+  containers:
+    - name: nginx-container
+      image: nginx
+      imagePullPolicy: Always
+      ports:
+        - containerPort: 80
