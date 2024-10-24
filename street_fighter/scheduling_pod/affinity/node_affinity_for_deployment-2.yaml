@@ -26,6 +26,7 @@ spec:
                     operator: In
                     values:
                       - banani
+
       containers:
         - name: nginx-container
           image: nginx
